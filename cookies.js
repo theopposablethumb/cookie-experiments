@@ -14,6 +14,7 @@ const createCookie = (name, cookieExpireDays) => {
   if (decodedCookie) {
     document.querySelector('body').classList.add('yay');
     heading.innerHTML = 'Mmmmm Cookies';
+    heading.setAttribute('data-text', 'Mmmmm Cookies');
     status.innerHTML = 'Cookies in the Cookie Jar :)'
   };
   if (!decodedCookie) status.innerHTML = 'Cookie jar is empty :(';
