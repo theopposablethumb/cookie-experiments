@@ -10,12 +10,16 @@ const createCookie = (name, cookieExpireDays) => {
   const decodedCookie = decodeURIComponent(document.cookie);
   const status = document.querySelector('p');
   status.innerHTML= decodedCookie;
-  if (decodedCookie) status.innerHTML = 'Cookies in the Cookie Jar :)';
+  if (decodedCookie) {
+    document.querySelector('body').classList.add('yay');
+    status.innerHTML = 'Cookies in the Cookie Jar :)'
+  };
   if (!decodedCookie) status.innerHTML = 'Cookie jar is empty :(';
 }
 
 const removeCookie = () => {
   document.cookie = "consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.querySelector('body').classList.remove('yay');
 }
 
 const cookieConsent = () => {

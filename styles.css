@@ -3,14 +3,24 @@
 body { margin: 0; padding: 0; font-size: 16px; background: rgb(88,121,140);
   background: linear-gradient(180deg, #58798c 0%, #234b62 100%); color: #f8f6b2; min-height: 100vh; }
 
+body.yay { background: linear-gradient(180deg, #cfeb92 0%, #90da95 100%); color: #234b62; }
+
 h1 { position: relative; font-size: 6em; font-family: 'Fredoka One', cursive; margin: 1em auto 0; text-align: center; background-image: linear-gradient(180deg, #f8f6b2 28%, #b9944d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;  -moz-background-clip: text; -moz-text-fill-color: transparent; }
-h1:after { width: 100vw; background: none; content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; text-shadow: 0 3px 2px rgb(46, 82, 104); }
+h1:after { width: 100vw; background: none; content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; text-shadow: 0 3px 2px #2e5268; }
 p { font-size: 3em; font-family: 'Nunito', sans-serif; font-weight: 800; text-align: center; margin: 0.5em auto 0; }
+
+.yay h1 { background-image: linear-gradient(180deg, #58798c 28%, #234b62 100%); }
+.yay h1:after { text-shadow: 0 3px 2px #59ab5f; }
 
 .flex { display: flex; flex-wrap: nowrap; justify-content: center; }
 
 button { font-size: 1.6em; background:#e9a771; border: none; display: block; margin: 3em 1em; border-radius: 6px; box-shadow: 0 3px 2px #2e5268; padding: 0.8em; color:#691a09; }
-button:hover { background:#f7c398; box-shadow: 0 1px 2px #2e5268; }
+button:hover { background:#f7c398; }
 
 button.delete { background: none; border: 8px solid #e9a771; color: #e9a771; box-sizing: border-box; }
 button.delete:hover { border-color: #f7c398; color: #f7c398; }
+
+.yay button { background: #1e705d; box-shadow: 0 3px 2px #90da95; color: #f8f6b2; }
+.yay button:hover { background: #2b8570; }
+.yay button.delete { background: none; border-color: #1e705d; color: #1e705d; }
+.yay button.delete:hover {  border-color: #2b8570; color: #2b8570; }
