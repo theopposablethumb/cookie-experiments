@@ -13,7 +13,7 @@
     <link href="styles.css" rel="stylesheet">
     <script src="cookies.js"></script>
     <script>
-      document.cookies.onChanged.addListener(() => {
+      document.cookie.onChanged.addListener(() => {
         document.querySelector('h1').innerHTML = "Cookies accepted!";
       })
     </script>
