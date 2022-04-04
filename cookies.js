@@ -20,7 +20,7 @@ const createCookie = (name, cookieExpireDays) => {
 const removeCookie = () => {
   const removeCookie = document.querySelector('button.delete');
   removeCookie.addEventListener('click', () => {
-    document.cookie = "consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "name=consent; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.querySelector('body').classList.remove('yay');
   });
 }
