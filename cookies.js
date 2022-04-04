@@ -8,10 +8,12 @@ const createCookie = (name, cookieExpireDays) => {
 
  const checkCookie = () => {
   const decodedCookie = decodeURIComponent(document.cookie);
+  const heading = document.querySelector('h1');
   const status = document.querySelector('p');
   status.innerHTML= decodedCookie;
   if (decodedCookie) {
     document.querySelector('body').classList.add('yay');
+    heading = 'Mmmmm Cookies';
     status.innerHTML = 'Cookies in the Cookie Jar :)'
   };
   if (!decodedCookie) status.innerHTML = 'Cookie jar is empty :(';
@@ -19,9 +21,13 @@ const createCookie = (name, cookieExpireDays) => {
 
 const removeCookie = () => {
   const removeCookie = document.querySelector('button.delete');
+  const heading = document.querySelector('h1');
+  const status = document.querySelector('p');
   removeCookie.addEventListener('click', () => {
     document.cookie = "consent=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     document.querySelector('body').classList.remove('yay');
+    heading = 'Mmmmm Cookies';
+    status.innerHTML = 'Cookies in the Cookie Jar :)'
   });
 }
 
