@@ -2,7 +2,7 @@ const createCookie = (name, cookieExpireDays) => {
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   const expires = 'expires=' + currentDate.toUTCString();
-  const consent = name + '; SameSite=Lax; Secure;';
+  const consent = name + '; Path=/; SameSite=Lax; Secure;';
   document.cookie = consent + expires;
  }
 
@@ -20,7 +20,7 @@ const createCookie = (name, cookieExpireDays) => {
 const removeCookie = () => {
   const removeCookie = document.querySelector('button.delete');
   removeCookie.addEventListener('click', () => {
-    document.cookie = "name=consent; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "consent=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     document.querySelector('body').classList.remove('yay');
   });
 }
