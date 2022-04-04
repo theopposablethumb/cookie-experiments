@@ -37,6 +37,7 @@ const fireWhenReady = () => {
   document.addEventListener('DOMContentLoaded', () => {
     cookieConsent();
     checkCookie();
+    removeCookie();
  });
 };
 fireWhenReady();
