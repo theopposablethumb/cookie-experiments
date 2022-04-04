@@ -27,6 +27,7 @@ const removeCookie = () => {
     document.cookie = "consent=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     document.querySelector('body').classList.remove('yay');
     heading.innerHTML = 'Cookies not accepted';
+    heading.setAttribute(data-text, 'Cookies not accepted');
     status.innerHTML = 'Cookie jar is empty :(';
   });
 }
