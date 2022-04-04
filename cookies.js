@@ -6,20 +6,21 @@ const createCookie = (name, cookieExpireDays) => {
   document.cookie = consent + expires;
  }
 
-const cookieConsent = () => {
-  const acceptCookie = document.querySelector('button');
-  acceptCookie.addEventListener('click', () => {
-    createCookie('consent=true', 30);
-  });
-}
-
-const checkCookie = () => {
+ const checkCookie = () => {
   const decodedCookie = decodeURIComponent(document.cookie);
   const status = document.querySelector('p');
   console.log(decodedCookie);
   status.innerHTML= decodedCookie;
-  // if (decodedCookie) document.querySelector('.cookiePopUp').classList.add('hidden');
-  // if (!decodedCookie) document.querySelector('.cookiePopUp').classList.remove('hidden');
+  if (decodedCookie) status.innerHTML = 'Cookies in the Cookie Jar :)';
+  if (!decodedCookie) status.innerHTML = 'Cookie jar is empty :(';
+}
+
+const cookieConsent = () => {
+  const acceptCookie = document.querySelector('button');
+  acceptCookie.addEventListener('click', () => {
+    createCookie('consent=true', 30);
+    checkCookie();
+  });
 }
 
 const fireWhenReady = () => {
