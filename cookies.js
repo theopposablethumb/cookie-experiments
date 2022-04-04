@@ -9,10 +9,13 @@ const createCookie = (name, cookieExpireDays) => {
  const checkCookie = () => {
   const decodedCookie = decodeURIComponent(document.cookie);
   const status = document.querySelector('p');
-  console.log(decodedCookie);
   status.innerHTML= decodedCookie;
   if (decodedCookie) status.innerHTML = 'Cookies in the Cookie Jar :)';
   if (!decodedCookie) status.innerHTML = 'Cookie jar is empty :(';
+}
+
+const removeCookie = () => {
+  document.cookie = "consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 const cookieConsent = () => {
