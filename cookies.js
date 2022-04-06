@@ -44,6 +44,7 @@ const cookieConsent = () => {
     security: false
   };
   acceptCookie.addEventListener('click', () => {
+    console.log('yes boss');
     createCookie('consent=' + JSON.stringify(accept), 30);
     checkCookie();
   });
