@@ -12,6 +12,7 @@ const createCookie = (name, value, cookieExpireDays) => {
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   const expires = 'expires=' + currentDate.toUTCString();
   const consent = `${name}=${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
+  console.log(consent);
   document.cookie = consent + expires;
  }
 
@@ -42,38 +43,67 @@ const removeCookie = () => {
   });
 }
 
-const cookieConsent = () => {
-  const acceptCookie = document.querySelector('button.review');
+const cookiePopUp = () => {
+  const reviewCookies = document.querySelector('button.review');
   const consent = document.querySelector('.consentPopUp');
   const backdrop = document.querySelector('.backdrop');
-  // const accept = {
-  //   advertising: false,
-  //   analytics: true,
-  //   functional: false,
-  //   personalization: false,
-  //   security: false
-  // };
-  acceptCookie.addEventListener('click', () => {
+
+  reviewCookies.addEventListener('click', () => {
     consent.classList.add('show');
     consent.classList.remove('hide');
     backdrop.classList.add('show');
     backdrop.classList.remove('hide');
-    // createCookie('consent', accept, 30);
+    // createCookie('consent', preferences, 30);
     // checkCookie();
   });
 }
 
+const cookieConsent = (prefs) => {
+  console.log(prefs);
+  const confirm = document.querySelectorAll('button.confirm');
+
+  confirm.addEventListener('click', () => {
+    createCookie(prefs);
+  });
+}
+
+const cookiePreferences = (checked, name) => {
+  const prefs = [
+    { 'purpose': 'advertising', 'consent': false },
+    { 'purpose': 'analytics', 'consent': false },
+    { 'purpose': 'functional', 'consent': false },
+    { 'purpose': 'personalisation', 'consent': false },
+    { 'purpose': 'security', 'consent': false }
+  ];
+
+  cookieConsent(
+    prefs.reduce((prev, current, i) => {
+      if (current.purpose === name && current.consent !== checked) {
+        prefs[i].consent = checked;
+      }
+    })
+  );
+}
+
+
 const cookieOptions = () => {
   const control = document.querySelectorAll('.control');
-  control.forEach(c => c.addEventListener('click', e => {
-    e.currentTarget.classList.toggle('active');
-    e.currentTarget.classList.toggle('inactive');
+
+  control.forEach(c =>
+    c.addEventListener('click', e => {
+      e.currentTarget.classList.toggle('active');
+      e.currentTarget.classList.toggle('inactive');
+      const input = e.currentTarget.querySelector('input');
+      input.toggleAttribute('checked');
+      cookiePreferences(input.checked, input.name);
   }));
-}
+
+  // Need to add functionality for accept and reject all. May need refactoring of cookiePreferences and reduce function to accomodate
+};
 
 const fireWhenReady = () => {
   document.addEventListener('DOMContentLoaded', () => {
-    cookieConsent();
+    cookiePopUp();
     checkCookie();
     removeCookie();
     cookieOptions();

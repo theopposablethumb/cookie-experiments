@@ -34,13 +34,13 @@ nav a:last-child { border-right: none; }
 button { font-size: 1.6em; background:#e9a771; border: none; display: block; margin: 3em 1em; border-radius: 6px; box-shadow: 0 3px 2px #2e5268; padding: 0.8em; color:#691a09; }
 button:hover { background:#f7c398; }
 
-button.delete { background: none; border: 8px solid #e9a771; color: #e9a771; box-sizing: border-box; }
-button.delete:hover { border-color: #f7c398; color: #f7c398; }
+button.deny { background: none; border: 8px solid #e9a771; color: #e9a771; box-sizing: border-box; }
+button.deny:hover { border-color: #f7c398; color: #f7c398; }
 
 .yay button { background: #1e705d; box-shadow: 0 3px 2px #90da95; color: #f8f6b2; }
 .yay button:hover { background: #2b8570; }
-.yay button.delete { background: none; border-color: #1e705d; color: #1e705d; }
-.yay button.delete:hover {  border-color: #2b8570; color: #2b8570; }
+.yay button.deny { background: none; border-color: #1e705d; color: #1e705d; }
+.yay button.deny:hover {  border-color: #2b8570; color: #2b8570; }
 
 .hide { display: none; }
 
@@ -65,7 +65,7 @@ button.delete:hover { border-color: #f7c398; color: #f7c398; }
 }
 
 .backdrop { position: fixed; z-index: 1; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); animation-name: darken; animation-duration: 0.2s; backdrop-filter: blur(2px); }
-.consentPopUp { position: fixed; z-index: 2; top: 10vh; height: 80vh; box-sizing: border-box; padding: 2.5em; border-radius: 12px; overflow: auto; left: 50vw; transform: translate(-50%, 0); background: #f7f7f7; color: #234b62; box-shadow:  0 8px 12px 0 rgba(0, 0, 0, 0.15); animation-name: appear; animation-duration: 0.1s; opacity: 1;}
+.consentPopUp { position: fixed; z-index: 2; top: 10vh; height: 80vh; padding: 2.5em; border-radius: 12px; overflow: auto; left: 50vw; transform: translate(-50%, 0); background: #f7f7f7; color: #234b62; box-shadow:  0 8px 12px 0 rgba(0, 0, 0, 0.15); animation-name: appear; animation-duration: 0.1s; opacity: 1;}
 .consentPopUp p { font-size: 1em; font-weight: 400; text-align: left; }
 
 .choices { margin: 1em 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;  }
@@ -76,7 +76,7 @@ form .actions { overflow: auto; }
 form button { background: #234b62; color: #fff; box-shadow: none; padding: 0.8em 1em; font-size: 1em; text-transform: uppercase; margin: 1.2em 0 0; float: right; }
 form button:hover { background: #2d9fa8; }
 
-input { opacity: 0; width: 0; height: 0; }
+/* input { opacity: 0; width: 0; height: 0; } */
 div.control { position: relative; width: 55px; height: 32px; border-radius: 16px; background: #ddd; border: 1px solid #bbb; }
 div.control.active { background: #eee; }
 div.control.active::after { content: ' '; position: absolute; height: 30px; width: 30px; top: 1px; left: 25px; border-radius: 50%; background: #4bc4aa; animation: slideIn 0.1s ease-in; }
