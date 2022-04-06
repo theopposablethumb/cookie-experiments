@@ -3,6 +3,7 @@ const createCookie = (name, cookieExpireDays) => {
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   const expires = 'expires=' + currentDate.toUTCString();
   const domain = 'domain=' + window.location.host.toString();
+  const consent = name + '; Path=/; SameSite=Lax; Secure;';
   document.cookie = consent + domain + expires;
  }
 
@@ -36,10 +37,11 @@ const removeCookie = () => {
 const cookieConsent = () => {
   const acceptCookie = document.querySelector('button');
   const accept = {
+    advertising: false,
     analytics: true,
-    functional: true,
-    personalisation: false,
-    security: true
+    functional: false,
+    personalization: false,
+    security: false
   };
   acceptCookie.addEventListener('click', () => {
     createCookie('consent=' + JSON.stringify(accept), 30);
