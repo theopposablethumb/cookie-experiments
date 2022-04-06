@@ -1,3 +1,12 @@
+const cookiePermissions = {
+  advertising: false,
+  analytics: false,
+  functional: false,
+  personalization: false,
+  security: false
+};
+
+
 const createCookie = (name, value, cookieExpireDays) => {
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
@@ -11,7 +20,6 @@ const createCookie = (name, value, cookieExpireDays) => {
   const heading = document.querySelector('h2');
   const status = document.querySelector('p');
   status.innerHTML= decodedCookie;
-  console.log(decodedCookie);
   if (decodedCookie) {
     document.querySelector('body').classList.add('yay');
     heading.innerHTML = 'Mmmmm Cookies';
@@ -36,13 +44,14 @@ const removeCookie = () => {
 
 const cookieConsent = () => {
   const acceptCookie = document.querySelector('button');
-  const accept = {
-    advertising: false,
-    analytics: true,
-    functional: false,
-    personalization: false,
-    security: false
-  };
+  const consent = document.querySelector('.consentPopUp');
+  // const accept = {
+  //   advertising: false,
+  //   analytics: true,
+  //   functional: false,
+  //   personalization: false,
+  //   security: false
+  // };
   acceptCookie.addEventListener('click', () => {
     createCookie('consent', accept, 30);
     checkCookie();

@@ -38,6 +38,35 @@
         <button class="delete">Remove cookies</button>
       </div>
       <img src="cookie-monster.png" alt="cookie monster" />
+      <div class="backdrop hidden"><!-- --></div>
+      <div class="consentPopUp">
+        <h3>Manage your consent preferences</h3>
+        <p>Select the types of cookies you consent to.</p>
+        <div class="flex choices">
+          <button class="accept">Accept all</button>
+          <button class="reject">Reject all</button>
+        </div>
+        <form>
+          <div class="choice">
+            <label for="analytics">Analytics</label>
+            <input type="checkbox" name="analytics" />
+            <p>We're watching you</p>
+          </div>
+          <div class="choice">
+            <label for="personalisation">Personalisation</label>
+            <input type="checkbox" name="personalisation" />
+            <p>We're also a bit creepy and following you</p>
+          </div>
+          <div class="choice">
+            <label for="security">Security</label>
+            <input type="checkbox" name="security" />
+            <p>But we will look after you</p>
+          </div>
+          <div class="actions">
+            <button class="confirm">Confirm</button>
+          </div>
+        </form>
+      </div>
     </main>
   </body>
 
