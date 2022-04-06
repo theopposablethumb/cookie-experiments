@@ -34,12 +34,12 @@
       <h2 data-text="Cookies not accepted">Cookies not accepted</h2>
       <p></p>
       <div class="flex center">
-        <button>Accept cookies</button>
-        <button class="delete">Remove cookies</button>
+        <button class="review">Review cookies</button>
+        <button class="reject">Remove cookies</button>
       </div>
       <img src="cookie-monster.png" alt="cookie monster" />
-      <div class="backdrop hidden"><!-- --></div>
-      <div class="consentPopUp">
+      <div class="backdrop hide"><!-- --></div>
+      <div class="consentPopUp hide">
         <h3>Manage your consent preferences</h3>
         <p>Select the types of cookies you consent to.</p>
         <div class="flex choices">
@@ -49,21 +49,27 @@
         <form>
           <div class="choice">
             <label for="analytics">Analytics</label>
-            <input type="checkbox" name="analytics" />
+            <div class="control inactive">
+              <input type="checkbox" name="analytics" />
+            </div>
             <p>We're watching you</p>
           </div>
           <div class="choice">
             <label for="personalisation">Personalisation</label>
-            <input type="checkbox" name="personalisation" />
+            <div class="control inactive">
+              <input type="checkbox" name="personalisation" />
+            </div>
             <p>We're also a bit creepy and following you</p>
           </div>
           <div class="choice">
             <label for="security">Security</label>
-            <input type="checkbox" name="security" />
+            <div class="control inactive">
+              <input type="checkbox" name="security" />
+            </div>
             <p>But we will look after you</p>
           </div>
           <div class="actions">
-            <button class="confirm">Confirm</button>
+            <button class="accept">Confirm</button>
           </div>
         </form>
       </div>

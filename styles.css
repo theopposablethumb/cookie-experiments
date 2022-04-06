@@ -42,8 +42,30 @@ button.delete:hover { border-color: #f7c398; color: #f7c398; }
 .yay button.delete { background: none; border-color: #1e705d; color: #1e705d; }
 .yay button.delete:hover {  border-color: #2b8570; color: #2b8570; }
 
+.hide { display: none; }
+
+@keyframes darken {
+  from { background: rgba(0, 0, 0, 0); }
+  to { background: rgba(0, 0, 0, 0.5); }
+}
+
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { left: 0; }
+  to { left: 25px; }
+}
+
+@keyframes slideOut {
+  from { left: 25px; }
+  to { left: 0; }
+}
+
 .backdrop { position: fixed; z-index: 1; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); animation-name: darken; animation-duration: 0.2s; backdrop-filter: blur(2px); }
-.consentPopUp { display: block; position: fixed; z-index: 2; top: 10vh; height: 80vh; box-sizing: border-box; padding: 2.5em; border-radius: 12px; overflow: auto; left: 50vw; transform: translate(-50%, 0); background: #f7f7f7; color: #234b62; box-shadow:  0 8px 12px 0 rgba(0, 0, 0, 0.15);}
+.consentPopUp { position: fixed; z-index: 2; top: 10vh; height: 80vh; box-sizing: border-box; padding: 2.5em; border-radius: 12px; overflow: auto; left: 50vw; transform: translate(-50%, 0); background: #f7f7f7; color: #234b62; box-shadow:  0 8px 12px 0 rgba(0, 0, 0, 0.15); animation-name: appear; animation-duration: 0.1s; opacity: 1;}
 .consentPopUp p { font-size: 1em; font-weight: 400; text-align: left; }
 
 .choices { margin: 1em 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;  }
@@ -53,6 +75,13 @@ button.delete:hover { border-color: #f7c398; color: #f7c398; }
 form .actions { overflow: auto; }
 form button { background: #234b62; color: #fff; box-shadow: none; padding: 0.8em 1em; font-size: 1em; text-transform: uppercase; margin: 1.2em 0 0; float: right; }
 form button:hover { background: #2d9fa8; }
+
+input { opacity: 0; width: 0; height: 0; }
+div.control { position: relative; width: 55px; height: 32px; border-radius: 16px; background: #ddd; border: 1px solid #bbb; }
+div.control.active { background: #eee; }
+div.control.active::after { content: ' '; position: absolute; height: 30px; width: 30px; top: 1px; left: 25px; border-radius: 50%; background: #4bc4aa; animation: slideIn 0.1s ease-in; }
+div.control.inactive::after { content: ' '; position: absolute; height: 30px; width: 30px; top: 1px; left: 1px; border-radius: 50%; background: #bbb; animation: slideOut 0.1s ease-in; }
+
 
 @keyframes emerge {
   from { bottom: -317px; }
