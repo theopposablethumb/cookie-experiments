@@ -1,9 +1,9 @@
-const createCookie = (name, cookieExpireDays) => {
+const createCookie = (name, value, cookieExpireDays) => {
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   const expires = 'expires=' + currentDate.toUTCString();
   const domain = 'domain=' + window.location.host.toString();
-  const consent = name + '; Path=/; SameSite=Lax; Secure;';
+  const consent = `${name} = ${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
   document.cookie = consent + domain + expires;
  }
 
@@ -12,6 +12,7 @@ const createCookie = (name, cookieExpireDays) => {
   const heading = document.querySelector('h1');
   const status = document.querySelector('p');
   status.innerHTML= decodedCookie;
+  console.log(decodedCookie);
   if (decodedCookie) {
     document.querySelector('body').classList.add('yay');
     heading.innerHTML = 'Mmmmm Cookies';
@@ -44,8 +45,7 @@ const cookieConsent = () => {
     security: false
   };
   acceptCookie.addEventListener('click', () => {
-    console.log('yes boss');
-    createCookie('consent=' + JSON.stringify(accept), 30);
+    createCookie('consent', accept, 30);
     checkCookie();
   });
 }
