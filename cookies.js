@@ -5,6 +5,7 @@ const createCookie = (name, value, cookieExpireDays) => {
   const domain = 'domain=' + window.location.host.toString();
   const consent = `${name} = ${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
   console.log(consent);
+  console.log(domain);
   document.cookie = consent + domain + expires;
  }
 
