@@ -3,7 +3,7 @@ const createCookie = (name, value, cookieExpireDays) => {
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   const expires = 'expires=' + currentDate.toUTCString();
   const domain = 'domain=' + window.location.host.toString();
-  const consent = `${name} = ${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
+  const consent = `${name}=${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
   console.log(consent);
   console.log(domain);
   document.cookie = consent + domain + expires;
