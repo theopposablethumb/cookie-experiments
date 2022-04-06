@@ -2,10 +2,7 @@ const createCookie = (name, value, cookieExpireDays) => {
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   const expires = 'expires=' + currentDate.toUTCString();
-  // const domain = 'domain=' + window.location.host.toString();
   const consent = `${name}=${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
-  console.log(consent);
-  // console.log(domain);
   document.cookie = consent + expires;
  }
 
@@ -26,7 +23,7 @@ const createCookie = (name, value, cookieExpireDays) => {
 
 const removeCookie = () => {
   const removeCookie = document.querySelector('button.delete');
-  const heading = document.querySelector('h1');
+  const heading = document.querySelector('h2');
   const status = document.querySelector('p');
   removeCookie.addEventListener('click', () => {
     document.cookie = "consent=; Path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
