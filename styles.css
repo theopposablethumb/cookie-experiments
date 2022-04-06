@@ -22,6 +22,8 @@ nav a { font-size: 1em; font-weight: 400; display: inline-block; padding: 0.5em 
 nav a:hover { text-decoration: underline; }
 nav a:last-child { border-right: none; }
 
+.yay nav a { color:#234b62; }
+
 .flex { display: flex; flex-wrap: nowrap; }
 .center { justify-content: center; }
 .between { justify-content: space-between; }
