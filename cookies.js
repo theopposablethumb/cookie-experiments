@@ -8,7 +8,7 @@ const createCookie = (name, value, cookieExpireDays) => {
 
  const checkCookie = () => {
   const decodedCookie = decodeURIComponent(document.cookie);
-  const heading = document.querySelector('h1');
+  const heading = document.querySelector('h2');
   const status = document.querySelector('p');
   status.innerHTML= decodedCookie;
   console.log(decodedCookie);
