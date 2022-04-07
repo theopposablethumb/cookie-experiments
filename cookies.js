@@ -1,8 +1,8 @@
-const createCookie = (name, value, cookieExpireDays) => {
+const createCookie = (value, cookieExpireDays) => {
   const currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   const expires = 'expires=' + currentDate.toUTCString();
-  const consent = `${name}=${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
+  const consent = `consent=${JSON.stringify(value)}; Path=/; SameSite=Lax; Secure;`;
   console.log(consent);
   document.cookie = consent + expires;
  }
