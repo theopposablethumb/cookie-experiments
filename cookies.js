@@ -70,7 +70,6 @@ const cookiePreferences = (accepted) => {
   if (!accepted.length) {
     prefs.forEach(p => p.consent = false);
   }
-  console.log(prefs);
   cookieConsent(prefs);
 }
 
