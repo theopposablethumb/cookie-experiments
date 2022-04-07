@@ -48,25 +48,14 @@ const cookiePopUp = () => {
 }
 
 const cookieConsent = (prefs) => {
-  console.log(prefs);
-  const confirm = document.querySelectorAll('button.confirm');
+  const confirm = document.querySelector('button.confirm');
 
   confirm.addEventListener('click', () => {
     createCookie(prefs);
   });
 }
 
-const reducePrefs = (prefs, name, checked) => {
-  // this should just take an array of true values to rebuild the prefs object, values not in the array will be false
-  // don't need the checked parameter
-  return prefs.reduce((prev, current, i) => {
-    if (current.purpose === name && current.consent !== checked) {
-      prefs[i].consent = checked;
-    }
-  })
-}
-
-const cookiePreferences = (checked, name) => {
+const cookiePreferences = (accepted) => {
   const prefs = [
     { 'purpose': 'advertising', 'consent': false },
     { 'purpose': 'analytics', 'consent': false },
@@ -74,14 +63,23 @@ const cookiePreferences = (checked, name) => {
     { 'purpose': 'personalisation', 'consent': false },
     { 'purpose': 'security', 'consent': false }
   ];
-  // remove the checked parameter
-  cookieConsent(reducePrefs(prefs, checked, name));
+  // need logic to say if !accepted.length set everything to false. Needs to accound for if people set something to true then reject it needs to get set back to false
+  accepted.forEach(a => {
+    const i = prefs.findIndex(p => p.purpose === a);
+    prefs[i].consent = true;
+  })
+  if (!accepted.length) {
+    prefs.forEach(p => p.consent = false);
+  }
+  console.log(prefs);
+  cookieConsent(prefs);
 }
-
 
 const cookieOptions = () => {
   const control = document.querySelectorAll('.control');
-  // const accepted = [];
+  const acceptAll = document.querySelector('.accept');
+  const rejectAll = document.querySelector('.reject');
+  let accepted = [];
 
   control.forEach(c =>
     c.addEventListener('click', e => {
@@ -89,11 +87,35 @@ const cookieOptions = () => {
       e.currentTarget.classList.toggle('inactive');
       const input = e.currentTarget.querySelector('input');
       input.toggleAttribute('checked');
-      // check attribute checked is true?
-      // build a new arra of true values
-      cookiePreferences(input.checked, input.name); // just use an array here
+
+      if (input.checked) {
+        accepted.push(input.getAttribute('name'));
+      }
+      if (!input.checked) {
+        accepted.pop(input.getAttribute('name'));
+      }
+      cookiePreferences(accepted);
   }));
 
+  acceptAll.addEventListener('click', () => {
+    control.forEach(c => {
+      accepted.push( c.querySelector('input').getAttribute('name') );
+      c.querySelector('input').setAttribute('checked', true);
+      c.classList.add('active');
+      c.classList.remove('inactive');
+    });
+    cookiePreferences(accepted);
+  })
+
+  rejectAll.addEventListener('click', () => {
+    accepted = [];
+    control.forEach(c => {
+      c.querySelector('input').setAttribute('checked', false);
+      c.classList.add('inactive');
+      c.classList.remove('active');
+    });
+    cookiePreferences(accepted);
+  })
   // Need to add functionality for accept and reject all. May need refactoring of cookiePreferences and reduce function to accomodate
 };
 
