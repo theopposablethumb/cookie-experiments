@@ -21,17 +21,17 @@ const getCookie = (cookieName) => {
   let acceptedCookie = false;
   if (cookie) decodedCookie = JSON.parse(cookie);
   if (decodedCookie.some(dc => dc.consent === true)) acceptedCookie = true;
-  console.log(acceptedCookie);
+
   const heading = document.querySelector('h2');
   const status = document.querySelector('p');
 
-  if (cookie) {
+  if (acceptedCookie) {
     document.querySelector('body').classList.add('yay');
     heading.innerHTML = 'Mmmmm Cookies';
     heading.setAttribute('data-text', 'Mmmmm Cookies');
     status.innerHTML = 'Cookies in the Cookie Jar :)'
   };
-  if (!cookie) status.innerHTML = 'Cookie jar is empty :(';
+  if (!cookie || !acceptedCookie) status.innerHTML = 'Cookie jar is empty :(';
 }
 
 const removeCookie = () => {
