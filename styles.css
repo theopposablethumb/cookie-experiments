@@ -14,7 +14,7 @@ h2 { position: relative; font-size: 6em; font-family: 'Fredoka One', cursive; ma
 h2:after { width: 100vw; background: none; content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; text-shadow: 0 3px 2px #2e5268; }
 p { font-size: 3em; font-weight: 800; text-align: center; margin: 0.5em auto 0; }
 ul { font-size: 1.4em; font-weight: 400; text-align: center; margin: 0.5em auto 0; list-style: none; }
-li { padding: 0.8em 0; }
+li { padding: 0.8em 0 0;}
 
 .yay h2 { background-image: linear-gradient(180deg, #58798c 28%, #234b62 100%); }
 .yay h2:after { text-shadow: 0 3px 2px #59ab5f; }
@@ -67,16 +67,17 @@ button.deny:hover { border-color: #f7c398; color: #f7c398; }
 }
 
 .backdrop { position: fixed; z-index: 1; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); animation-name: darken; animation-duration: 0.2s; backdrop-filter: blur(2px); }
-.consentPopUp { position: fixed; z-index: 2; top: 10vh; height: 80vh; padding: 2.5em; border-radius: 12px; overflow: auto; left: 50vw; transform: translate(-50%, 0); background: #f7f7f7; color: #234b62; box-shadow:  0 8px 12px 0 rgba(0, 0, 0, 0.15); animation-name: appear; animation-duration: 0.1s; opacity: 1;}
+.consentPopUp { position: fixed; z-index: 2; top: 10vh; height: 70vh; padding: 2.5em; border-radius: 12px; overflow: auto; left: 50vw; transform: translate(-50%, 0); background: #f7f7f7; color: #234b62; box-shadow:  0 8px 12px 0 rgba(0, 0, 0, 0.15); animation-name: appear; animation-duration: 0.1s; opacity: 1;}
 .consentPopUp p { font-size: 1em; font-weight: 400; text-align: left; }
 
 .choices { margin: 1em 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;  }
 .choice { border-bottom: 1px solid #ccc; padding: 1.6em 0; }
-.choices button { background: #f7f7f7; margin: 0; font-size: 1em; text-transform: uppercase; box-shadow: none; width: 50%; padding: 0.8em 0; }
+.choices button, .yay .choices button { background: #f7f7f7; color: #333; margin: 0; font-size: 1em; text-transform: uppercase; box-shadow: none; width: 50%; padding: 0.8em 0; }
+.choices button:hover, .yay .choices button:hover { background: #eee; }
 
 form .actions { overflow: auto; }
-form button { background: #234b62; color: #fff; box-shadow: none; padding: 0.8em 1em; font-size: 1em; text-transform: uppercase; margin: 1.2em 0 0; float: right; }
-form button:hover { background: #2d9fa8; }
+form button, .yay form button { background: #234b62; color: #fff; box-shadow: none; padding: 0.8em 1em; font-size: 1em; text-transform: uppercase; margin: 1.2em 0 0; float: right; }
+form button:hover, .yay form button:hover { background: #2d9fa8; }
 
 input { opacity: 0; width: 0; height: 0; }
 div.control { position: relative; width: 55px; height: 32px; border-radius: 16px; background: #ddd; border: 1px solid #bbb; }
