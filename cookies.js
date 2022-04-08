@@ -33,7 +33,7 @@ const getCookie = (cookieName) => {
     if (status) status.innerHTML = 'Cookies in the Cookie Jar :)';
     if (banner) banner.classList.add('hide');
   };
-  if (!cookie || !acceptedCookie) status.innerHTML = 'Cookie jar is empty :(';
+  if ((!cookie || !acceptedCookie) && status) status.innerHTML = 'Cookie jar is empty :(';
 }
 
 const removeCookie = () => {
