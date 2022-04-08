@@ -17,6 +17,7 @@
           const heading = document.querySelector('h2');
           const status = document.querySelector('p');
           status.innerHTML= decodedCookie;
+          console.log(decodedCookie);
           if (decodedCookie) {
             document.querySelector('body').classList.add('yay');
             heading.innerHTML = 'Mmmmm Cookies';
