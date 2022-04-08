@@ -37,7 +37,9 @@
             heading.setAttribute('data-text', 'Mmmmm Cookies');
             status.innerHTML = 'Cookies in the Cookie Jar :)';
             consentDetails.innerHTML = decodedCookie.map(dc => {
-              return `<li>${dc.purpose} - ${dc.consent}</li>`;
+              let acc = 'Declined';
+              if (dc.consent) acc = 'Accepted';
+              return `<li>${dc.purpose.charAt(0).toUpperCase() + dc.purpose.slice(1)} - ${acc}</li>`;
             }).join('');
           };
           if (!cookie) {
