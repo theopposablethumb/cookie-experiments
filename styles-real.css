@@ -10,6 +10,8 @@ h2 { font-size: 2em; line-height: 1.2em; margin: 0 0 1.2em 0; }
 h3 { font-size: 1.6em; margin: 0 0 0.8em; }
 h4, label { font-size: 1.2em; font-weight: 800; }
 
+p.intro { font-size: 1.2em; line-height: 1.4em; }
+
 header, .hero, .content { margin: 0 auto; max-width: 1200px; width: 80vw; }
 .hero, .section { margin: 3em auto; }
 .section, footer { width: 100%; padding: 2.8em 0; }
