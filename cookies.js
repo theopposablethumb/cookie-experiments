@@ -24,12 +24,14 @@ const getCookie = (cookieName) => {
 
   const heading = document.querySelector('h2');
   const status = document.querySelector('p');
+  const banner = document.querySelector('.cookieBanner');
 
   if (acceptedCookie) {
     document.querySelector('body').classList.add('yay');
     heading.innerHTML = 'Mmmmm Cookies';
     heading.setAttribute('data-text', 'Mmmmm Cookies');
-    status.innerHTML = 'Cookies in the Cookie Jar :)'
+    status.innerHTML = 'Cookies in the Cookie Jar :)';
+    banner.classList.add('hide');
   };
   if (!cookie || !acceptedCookie) status.innerHTML = 'Cookie jar is empty :(';
 }
@@ -51,12 +53,14 @@ const cookiePopUp = () => {
   const reviewCookies = document.querySelector('button.review');
   const consent = document.querySelector('.consentPopUp');
   const backdrop = document.querySelector('.backdrop');
+  const banner = document.querySelector('.cookieBanner');
 
   reviewCookies.addEventListener('click', () => {
     consent.classList.add('show');
     consent.classList.remove('hide');
     backdrop.classList.add('show');
     backdrop.classList.remove('hide');
+    banner.classList.add('hide');
   });
 }
 
