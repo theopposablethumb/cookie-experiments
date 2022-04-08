@@ -31,7 +31,7 @@ const getCookie = (cookieName) => {
     if (heading) heading.innerHTML = 'Mmmmm Cookies';
     if (heading) heading.setAttribute('data-text', 'Mmmmm Cookies');
     if (status) status.innerHTML = 'Cookies in the Cookie Jar :)';
-    banner.classList.add('hide');
+    if (banner) banner.classList.add('hide');
   };
   if (!cookie || !acceptedCookie) status.innerHTML = 'Cookie jar is empty :(';
 }
