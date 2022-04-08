@@ -28,9 +28,9 @@ const getCookie = (cookieName) => {
 
   if (acceptedCookie) {
     document.querySelector('body').classList.add('yay');
-    heading.innerHTML = 'Mmmmm Cookies';
-    heading.setAttribute('data-text', 'Mmmmm Cookies');
-    status.innerHTML = 'Cookies in the Cookie Jar :)';
+    if (heading) heading.innerHTML = 'Mmmmm Cookies';
+    if (heading) heading.setAttribute('data-text', 'Mmmmm Cookies');
+    if (status) status.innerHTML = 'Cookies in the Cookie Jar :)';
     banner.classList.add('hide');
   };
   if (!cookie || !acceptedCookie) status.innerHTML = 'Cookie jar is empty :(';
