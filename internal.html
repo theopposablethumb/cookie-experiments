@@ -24,7 +24,8 @@
 
        const checkCookie = () => {
           const cookie = getCookie('consent');
-          const decodedCookie = JSON.parse(cookie);
+          let decodedCookie;
+          if (cookie) decodedCookie = JSON.parse(cookie);
           // const decodedCookie = [{"purpose":"advertising","consent":false},{"purpose":"analytics","consent":true},{"purpose":"functional","consent":false},{"purpose":"personalisation","consent":false},{"purpose":"security","consent":false}];
           const heading = document.querySelector('h2');
           const status = document.querySelector('p');
