@@ -25,13 +25,15 @@
        const checkCookie = () => {
           const cookie = getCookie('consent');
           let decodedCookie;
+          let acceptedCookie = false;
           if (cookie) decodedCookie = JSON.parse(cookie);
+          if (decodedCookie.some(dc => dc.consent === true)) acceptedCookie = true;
 
           const heading = document.querySelector('h2');
           const status = document.querySelector('p');
           const consentDetails = document.querySelector('ul.deets');
 
-          if (cookie) {
+          if (acceptedCookie) {
             document.querySelector('body').classList.add('yay');
             heading.innerHTML = 'Mmmmm Cookies';
             heading.setAttribute('data-text', 'Mmmmm Cookies');
@@ -42,7 +44,7 @@
               return `<li>${dc.purpose.charAt(0).toUpperCase() + dc.purpose.slice(1)} - ${acc}</li>`;
             }).join('');
           };
-          if (!cookie) {
+          if (!cookie || !acceptedCookie) {
             status.innerHTML = 'Cookie jar is empty :(';
           }
         }
