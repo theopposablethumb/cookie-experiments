@@ -23,19 +23,27 @@
         }
 
        const checkCookie = () => {
-          const decodedCookie = decodeURIComponent(document.cookie);
-          console.log(getCookie('consent'));
+          const cookie = getCookie('consent');
+          const decodedCookie = JSON.parse(cookie);
+          // const decodedCookie = [{"purpose":"advertising","consent":false},{"purpose":"analytics","consent":true},{"purpose":"functional","consent":false},{"purpose":"personalisation","consent":false},{"purpose":"security","consent":false}];
           const heading = document.querySelector('h2');
           const status = document.querySelector('p');
-          status.innerHTML= decodedCookie;
-          console.log(decodedCookie);
-          if (decodedCookie) {
+          const consentDetails = document.querySelector('ul.deets');
+
+          // consentDetails.innerHTML = decodedCookie.map(dc => {
+          //     return `<li>${dc.purpose} - ${dc.consent}</li>`;
+          //   }).join('');
+
+          if (cookie) {
             document.querySelector('body').classList.add('yay');
             heading.innerHTML = 'Mmmmm Cookies';
             heading.setAttribute('data-text', 'Mmmmm Cookies');
-            status.innerHTML = 'Cookies in the Cookie Jar :)'
+            status.innerHTML = 'Cookies in the Cookie Jar :)';
+            consentDetails.innerHTML = decodedCookie.map(dc => {
+              return `<li>${dc.purpose} - ${dc.consent}</li>`;
+            }).join('');
           };
-          if (!decodedCookie) status.innerHTML = 'Cookie jar is empty :(';
+          if (!cookie) status.innerHTML = 'Cookie jar is empty :(';
         }
         const makeItSo = () => {
           document.addEventListener('DOMContentLoaded', () => {
@@ -65,6 +73,7 @@
     <main>
       <h2 data-text="This is an internal page">This is an internal page</h2>
       <p>Your cookie options should persist on this page, if everything has been built correctly :)</p>
+      <ul class="deets"></ul>
       <img src="cookie-monster.png" alt="cookie monster" />
     </main>
   </body>
