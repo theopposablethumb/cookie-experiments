@@ -43,7 +43,10 @@
               return `<li>${dc.purpose} - ${dc.consent}</li>`;
             }).join('');
           };
-          if (!cookie) status.innerHTML = 'Cookie jar is empty :(';
+          if (!cookie) {
+            console.log('nope');
+            status.innerHTML = 'Cookie jar is empty :(';
+          }
         }
         const makeItSo = () => {
           document.addEventListener('DOMContentLoaded', () => {
