@@ -6,18 +6,30 @@ const createCookie = (prefs, cookieExpireDays) => {
   document.cookie = consent + expires;
  }
 
+const getCookie = (cookieName) => {
+  let cookie = {};
+  document.cookie.split(';').forEach((co) => {
+    let [key,value] = co.split('=');
+    cookie[key.trim()] = value;
+  })
+  return cookie[cookieName];
+}
+
  const checkCookie = () => {
-  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookie = getCookie('consent');
+  let decodedCookie;
+  if (cookie) decodedCookie = JSON.parse(cookie);
+
   const heading = document.querySelector('h2');
   const status = document.querySelector('p');
-  status.innerHTML= decodedCookie;
-  if (decodedCookie) {
+
+  if (cookie) {
     document.querySelector('body').classList.add('yay');
     heading.innerHTML = 'Mmmmm Cookies';
     heading.setAttribute('data-text', 'Mmmmm Cookies');
     status.innerHTML = 'Cookies in the Cookie Jar :)'
   };
-  if (!decodedCookie) status.innerHTML = 'Cookie jar is empty :(';
+  if (!cookie) status.innerHTML = 'Cookie jar is empty :(';
 }
 
 const removeCookie = () => {
@@ -62,7 +74,7 @@ const cookiePreferences = (accepted) => {
     { 'purpose': 'personalisation', 'consent': false },
     { 'purpose': 'security', 'consent': false }
   ];
-  // need logic to say if !accepted.length set everything to false. Needs to accound for if people set something to true then reject it needs to get set back to false
+
   accepted.forEach(a => {
     const i = prefs.findIndex(p => p.purpose === a);
     prefs[i].consent = true;
@@ -114,7 +126,7 @@ const cookieOptions = () => {
     });
     cookiePreferences(accepted);
   })
-  // Need to add functionality for accept and reject all. May need refactoring of cookiePreferences and reduce function to accomodate
+
 };
 
 const fireWhenReady = () => {

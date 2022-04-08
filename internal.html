@@ -26,14 +26,10 @@
           const cookie = getCookie('consent');
           let decodedCookie;
           if (cookie) decodedCookie = JSON.parse(cookie);
-          // const decodedCookie = [{"purpose":"advertising","consent":false},{"purpose":"analytics","consent":true},{"purpose":"functional","consent":false},{"purpose":"personalisation","consent":false},{"purpose":"security","consent":false}];
+
           const heading = document.querySelector('h2');
           const status = document.querySelector('p');
           const consentDetails = document.querySelector('ul.deets');
-
-          // consentDetails.innerHTML = decodedCookie.map(dc => {
-          //     return `<li>${dc.purpose} - ${dc.consent}</li>`;
-          //   }).join('');
 
           if (cookie) {
             document.querySelector('body').classList.add('yay');
@@ -45,7 +41,6 @@
             }).join('');
           };
           if (!cookie) {
-            console.log('nope');
             status.innerHTML = 'Cookie jar is empty :(';
           }
         }
