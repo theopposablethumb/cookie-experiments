@@ -18,8 +18,10 @@ const getCookie = (cookieName) => {
  const checkCookie = () => {
   const cookie = getCookie('consent');
   let decodedCookie;
+  let acceptedCookie = false;
   if (cookie) decodedCookie = JSON.parse(cookie);
-
+  if (decodedCookie.some(dc => dc.consent === true)) acceptedCookie = true;
+  console.log(acceptedCookie);
   const heading = document.querySelector('h2');
   const status = document.querySelector('p');
 
