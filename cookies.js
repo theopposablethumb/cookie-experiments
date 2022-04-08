@@ -22,8 +22,8 @@ const getCookie = (cookieName) => {
   if (cookie) decodedCookie = JSON.parse(cookie);
   if (decodedCookie.some(dc => dc.consent === true)) acceptedCookie = true;
 
-  const heading = document.querySelector('h2');
-  const status = document.querySelector('p');
+  const heading = document.querySelector('h2.monster');
+  const status = document.querySelector('p.monster');
   const banner = document.querySelector('.cookieBanner');
 
   if (acceptedCookie) {
