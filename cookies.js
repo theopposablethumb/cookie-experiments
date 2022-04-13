@@ -20,7 +20,7 @@ const getCookie = (cookieName) => {
   let decodedCookie;
   let acceptedCookie = false;
   if (cookie) decodedCookie = JSON.parse(cookie);
-  if (decodedCookie.some(dc => dc.consent === true)) acceptedCookie = true;
+  if (decodedCookie && decodedCookie.some(dc => dc.consent === true)) acceptedCookie = true;
 
   const heading = document.querySelector('h2.monster');
   const status = document.querySelector('p.monster');
